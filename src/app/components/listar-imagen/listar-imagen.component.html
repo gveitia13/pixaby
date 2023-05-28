@@ -29,18 +29,30 @@
     <li class="page-item" *ngIf="pagimaAnteriorClass()">
       <a class="page-link" (click)="pagimaAnterior()">&laquo;Anterior</a>
     </li>
+
+    <li class="page-item"
+        *ngIf="!getPages10in10().get(10)?.includes(paginaActual)">
+      <a class="page-link"
+         (click)="paginaSeleccionada(calcularTotalPaginas-(calcularTotalPaginas-1))">
+        {{calcularTotalPaginas - (calcularTotalPaginas - 1)}}</a>
+    </li>
+    <span class="mx-2 fs-3"
+          *ngIf="!getPages10in10().get(10)?.includes(paginaActual)">
+      ...</span>
+
     <li class="page-item" *ngFor="let numPgae of pagesX10">
       <a class="page-link" [ngClass]="paginaActual===numPgae?'active':''"
          (click)="paginaSeleccionada(numPgae)">{{numPgae}}</a>
     </li>
 
     <span class="mx-2 fs-3"
-      *ngIf="!getPages10in10().get(Array.from(getPages10in10().keys()).length*10)?.includes(paginaActual)">
+          *ngIf="!getPages10in10().get(Array.from(getPages10in10().keys()).length*10)?.includes(paginaActual)">
       ...</span>
     <li class="page-item"
         *ngIf="!getPages10in10().get(Array.from(getPages10in10().keys()).length*10)?.includes(paginaActual)">
       <a class="page-link" (click)="paginaSeleccionada(calcularTotalPaginas)">{{calcularTotalPaginas}}</a>
     </li>
+
     <li class="page-item " *ngIf="paginaPosteriorClass()">
       <a class="page-link" (click)="paginaPosterior()">Siguiente&raquo;</a>
     </li>
