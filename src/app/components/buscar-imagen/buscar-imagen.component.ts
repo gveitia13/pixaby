@@ -19,6 +19,6 @@ export class BuscarImagenComponent {
       return
     }
     this._imagenService.enviarTerminoBusqueda(this.nombreImagen)
-    this.nombreImagen = ''//pastilla
+    // this.nombreImagen = ''
   }
 }
